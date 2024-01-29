@@ -124,4 +124,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	FORCEINLINE EPlayerWeapon GetPlayerWeaponState() const { return PlayerWeapon; };
+
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE class AC_Sword* GetSword() { return Sword; };
+
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE class AC_Rifle* GetRifle() { return Rifle; };
 };

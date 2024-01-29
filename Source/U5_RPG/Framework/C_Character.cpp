@@ -104,7 +104,7 @@ void AC_Character::BeginPlay()
 	}
 	// Spawn Sword
 	Sword = AC_Sword::Spawn(this);
-	Rifle = AC_Sword::Spawn(this);
+	Rifle = AC_Rifle::Spawn(this);
 }
 
 // Called to bind functionality to input
@@ -226,6 +226,7 @@ void AC_Character::UnEquip()
 	case EPlayerWeapon::Rifle: Rifle->UnEquip(); break;
 	case EPlayerWeapon::Sword: Sword->UnEquip(); break;
 	}
+	PlayerWeapon = EPlayerWeapon::Unarmed;
 }
 
 void AC_Character::Attack()
