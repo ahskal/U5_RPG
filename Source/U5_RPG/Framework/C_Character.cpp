@@ -15,7 +15,7 @@ AC_Character::AC_Character()
 	PrimaryActorTick.bCanEverTick = true;
 
 	// 충돌 캡슐 크기 설정
-	GetCapsuleComponent()->InitCapsuleSize(40.0f, 90.0f);
+	GetCapsuleComponent()->InitCapsuleSize(40.0f, 80.0f);
 
 	// 컨트롤러가 회전할 때 회전하지 말고 카메라에 영향을 주도록 하세요.
 	// 기본값은 1비트로 정의 된값을 0으로 초기화 -> true에서 false

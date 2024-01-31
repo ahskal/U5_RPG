@@ -6,17 +6,30 @@ AC_Rifle::AC_Rifle()
 	PrimaryActorTick.bCanEverTick = true;
 
 	OwnerCharacter = nullptr;
+	HandSocket = { TEXT("GunHandSocket") };
+	SheathSocket = { TEXT("GunSocket") };
 
-	//FString SkeletalMeshPath = TEXT("/Script/Engine.SkeletalMesh'/Game/Weapon/Sword/Sword.Sword'");
-	//CM GetObject<USkeletalMesh>(SkeletalMesh, SkeletalMeshPath);
-	//SkeletalMeshComponent->SetSkeletalMesh(SkeletalMesh);
-	//
-	//FString EquipMontagePath = TEXT("/Script/Engine.AnimMontage'/Game/Character/Dhana/Animation/Equip/AM_Draw_Sword.AM_Draw_Sword'");
-	//CM GetObject<UAnimMontage>(EquipMontage, EquipMontagePath);
-	//
-	//// unequip montages
-	//FString UnequipMontagePath = TEXT("/Script/Engine.AnimMontage'/Game/Character/Dhana/Animation/Equip/AM_Sheath_Sword.AM_Sheath_Sword'");
-	//CM GetObject<UAnimMontage>(UnequipMontage, UnequipMontagePath);
+	PrimaryActorTick.bCanEverTick = true;
+	CM CreateComponent(this, &Root, TEXT("Root"));
+	CM CreateComponent(this, &SkeletalMeshComponent, "Mesh", Root);
+
+	FString SkeletalMeshPath = TEXT("/Script/Engine.SkeletalMesh'/Game/Weapon/FPWeapon/Mesh/SK_FPGun.SK_FPGun'");
+	CM GetObject<USkeletalMesh>(SkeletalMesh, SkeletalMeshPath);
+	SkeletalMeshComponent->SetSkeletalMesh(SkeletalMesh);
+	
+	FString EquipMontagePath = TEXT("/Script/Engine.AnimMontage'/Game/Character/Dhana/Animation/Rifle/AM_Equip_Rifle.AM_Equip_Rifle'");
+	CM GetObject<UAnimMontage>(EquipMontage, EquipMontagePath);
+	
+	// unequip montages
+	FString UnequipMontagePath = TEXT("/Script/Engine.AnimMontage'/Game/Character/Dhana/Animation/Rifle/AM_UnEquip_Rifle.AM_UnEquip_Rifle'");
+	CM GetObject<UAnimMontage>(UnequipMontage, UnequipMontagePath);
+}
+
+void AC_Rifle::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	OwnerCharacter = Cast<ACharacter>(GetOwner());
 }
 
 AC_Rifle* AC_Rifle::Spawn(ACharacter* InOwner)
@@ -44,5 +57,3 @@ void AC_Rifle::UnEquipRifle()
 {
 	AttachToComponent(OwnerCharacter->GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, SheathSocket);
 }
-
-

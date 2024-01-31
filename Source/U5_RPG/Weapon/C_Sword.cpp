@@ -6,6 +6,13 @@ AC_Sword::AC_Sword()
 	PrimaryActorTick.bCanEverTick = true;
 
 	OwnerCharacter = nullptr;
+	HandSocket = { TEXT("HandSocket") };
+	SheathSocket = { TEXT("SheathSocket") };
+
+	PrimaryActorTick.bCanEverTick = true;
+	CM CreateComponent(this, &Root, TEXT("Root"));
+	CM CreateComponent(this, &SkeletalMeshComponent, "Mesh", Root);
+
 
 	FString SkeletalMeshPath = TEXT("/Script/Engine.SkeletalMesh'/Game/Weapon/Sword/Sword.Sword'");
 	CM GetObject<USkeletalMesh>(SkeletalMesh, SkeletalMeshPath);
@@ -17,6 +24,13 @@ AC_Sword::AC_Sword()
 	// unequip montages
 	FString UnequipMontagePath = TEXT("/Script/Engine.AnimMontage'/Game/Character/Dhana/Animation/Equip/AM_Sheath_Sword.AM_Sheath_Sword'");
 	CM GetObject<UAnimMontage>(UnequipMontage, UnequipMontagePath);
+}
+
+void AC_Sword::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	OwnerCharacter = Cast<ACharacter>(GetOwner());
 }
 
 AC_Sword* AC_Sword::Spawn(ACharacter* InOwner)
