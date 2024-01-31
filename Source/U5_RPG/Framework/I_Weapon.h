@@ -32,7 +32,7 @@ protected:
 
 	USkeletalMesh* SkeletalMesh;
 public:
-	// attack montages
+	// attack montages	
 	UAnimMontage* AttackMontage;
 
 	// equip montages

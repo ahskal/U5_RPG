@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "../Framework/I_Unit.h"
 #include "Logging/LogMacros.h"
 #include "C_Character.generated.h"
 
@@ -21,19 +22,12 @@ enum class EPlayerWeapon : uint8
 	Unarmed, Sword, Rifle
 };
 
-class AC_Sword;
-class AC_Rifle;
-
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS()
-class U5_RPG_API AC_Character : public ACharacter
+class U5_RPG_API AC_Character : public ACharacter, public II_Unit
 {
 	GENERATED_BODY()
-private:
-	AC_Sword* Sword = nullptr;
-	AC_Rifle* Rifle = nullptr;
-
 public:
 	// Sets default values for this character's properties
 	AC_Character();
@@ -78,10 +72,6 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
 	class UCameraComponent* Camera;
 
-	// SkeletalMesh 
-	UPROPERTY(EditDefaultsOnly)
-	USkeletalMesh* MeshAsset;
-
 	// ABP
 	UPROPERTY(EditDefaultsOnly)
 	UAnimBlueprint* AnimBlueprintAsset;
@@ -125,9 +115,4 @@ public:
 	UFUNCTION(BlueprintCallable)
 	FORCEINLINE EPlayerWeapon GetPlayerWeaponState() const { return PlayerWeapon; };
 
-	UFUNCTION(BlueprintCallable)
-	FORCEINLINE class AC_Sword* GetSword() { return Sword; };
-
-	UFUNCTION(BlueprintCallable)
-	FORCEINLINE class AC_Rifle* GetRifle() { return Rifle; };
 };
