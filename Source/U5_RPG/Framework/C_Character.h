@@ -3,14 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
-#include "../Framework/I_Unit.h"
+#include "../Framework/A_Unit.h"
 #include "Logging/LogMacros.h"
 #include "C_Character.generated.h"
 
 class USpringArmComponent;
 class UCameraComponent;
-class USkeletalMesh;
 class UAnimBlueprint;
 class UInputMappingContext;
 class UInputAction;
@@ -25,7 +23,7 @@ enum class EPlayerWeapon : uint8
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS()
-class U5_RPG_API AC_Character : public ACharacter, public II_Unit
+class U5_RPG_API AC_Character : public AA_Unit
 {
 	GENERATED_BODY()
 public:
@@ -114,5 +112,4 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	FORCEINLINE EPlayerWeapon GetPlayerWeaponState() const { return PlayerWeapon; };
-
 };

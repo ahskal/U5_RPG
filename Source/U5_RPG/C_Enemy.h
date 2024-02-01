@@ -3,12 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
-#include "Framework/I_Unit.h"
+#include "Framework/A_Unit.h"
 #include "C_Enemy.generated.h"
 
 UCLASS()
-class U5_RPG_API AC_Enemy : public ACharacter , public II_Unit
+class U5_RPG_API AC_Enemy : public AA_Unit
 {
 	GENERATED_BODY()
 

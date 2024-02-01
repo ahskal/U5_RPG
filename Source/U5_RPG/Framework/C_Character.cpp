@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "C_Character.h"
-#include "Framework.h"
+#include "C_Character.h"          
 #include "../Weapon/C_Sword.h"
 #include "../Weapon/C_Rifle.h"
+#include "Framework.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 

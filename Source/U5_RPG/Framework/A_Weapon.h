@@ -1,22 +1,11 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/Interface.h"
-#include "I_Weapon.generated.h"
+#include "GameFramework/Actor.h"
+#include "A_Weapon.generated.h"
 
-class USkeletalMeshComponent;
-class USceneComponent;
-
-UINTERFACE(Blueprintable, MinimalAPI)
-class UI_Weapon : public UInterface
-{
-	GENERATED_BODY()
-
-};
-
-class U5_RPG_API II_Weapon
+UCLASS()
+class U5_RPG_API AA_Weapon : public AActor
 {
 	GENERATED_BODY()
 protected:
@@ -43,6 +32,7 @@ public:
 
 	FName HandSocket;
 	FName SheathSocket;
+
 public:
 
 	void Equip();
